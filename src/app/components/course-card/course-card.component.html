@@ -12,7 +12,7 @@
       <p class="course-card__rating">rating {{course.rating}}</p>
     </div>
     <div>
-        <span>view details</span>
+        <a [routerLink]="['/courses', course.id]">view details</a>
     </div>
   </div>
 </div>
