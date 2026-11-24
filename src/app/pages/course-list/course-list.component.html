@@ -1,5 +1,7 @@
+<label for="search">Search:</label>
+<input type="text" id="search" placeholder="course name or city" (input)="onSearch($event)">
 <div class="course-list">
-    <app-course-card *ngFor="let course of courses" [course]="course"></app-course-card>
+    <app-course-card *ngFor="let course of filteredCourses" [course]="course"></app-course-card>
 </div>
 
 

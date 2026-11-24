@@ -6,6 +6,17 @@ import { GolfCourse } from 'src/app/models/golf-course';
   styleUrls: ['./course-list.component.scss'],
 })
 export class CourseListComponent {
+  searchText = '';
+  onSearch (event: Event){
+    this.searchText = (event.target as HTMLInputElement).value;
+
+  }
+  
+  get filteredCourses(): GolfCourse[]{
+    const term = this.searchText.trim().toLowerCase();
+    return this.courses.filter(c => c.name.toLowerCase().includes(term) || c.city.toLowerCase().includes(term))
+  }
+  
   courses: GolfCourse[] = [
     {
       id: 1,
