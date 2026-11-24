@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { CourseListComponent } from './pages/course-list/course-list.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
+import { RegionChipComponent } from './components/region-chip/region-chip.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CourseListComponent,
-    CourseCardComponent
+    CourseCardComponent,
+    RegionChipComponent
   ],
   imports: [
     BrowserModule,

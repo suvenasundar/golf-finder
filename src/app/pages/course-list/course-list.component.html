@@ -1,5 +1,6 @@
 <label for="search">Search:</label>
 <input type="text" id="search" placeholder="course name or city" (input)="onSearch($event)">
+<app-region-chip *ngFor="let r of regions" [region]="r" [selected]="r === selectedRegion" (picked)="selectedRegion = $event"></app-region-chip>
 <div class="course-list">
     <app-course-card *ngFor="let course of filteredCourses" [course]="course"></app-course-card>
 </div>
