@@ -1,4 +1,6 @@
-<ul>
-    <li *ngFor="let course of courses">{{course.name}}, {{course.city}}, {{course.holes}} holes , par {{course.par}}</li>
-</ul>
+<div class="course-list">
+    <app-course-card *ngFor="let course of courses" [course]="course"></app-course-card>
+</div>
+
+
 
