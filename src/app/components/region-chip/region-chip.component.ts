@@ -12,7 +12,6 @@ export class RegionChipComponent {
 
   onClick(){
     this.picked.emit(this.region)
-    console.log("selected",this.region)
   }
 
 }
