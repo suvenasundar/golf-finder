@@ -7,6 +7,9 @@ export class CourseService {
   getCourses(): GolfCourse[]{
     return this.courses
   }
+  getCourseById(id: number):GolfCourse | undefined {
+    return this.courses.find(c => c.id === id)
+  }
   courses: GolfCourse[] = [
     {
       id: 1,

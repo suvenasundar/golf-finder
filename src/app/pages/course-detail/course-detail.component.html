@@ -1,1 +1,7 @@
-<p>Course id: {{ id}}</p>
+<div *ngIf="course">
+    <h2>{{course.name}}</h2>
+    <p>{{course.city}} . {{course.region}}</p>
+    <p>{{course.holes}} holes . par {{course.par}}. rating {{course.rating}}</p>
+</div>
+
+<p *ngIf="!course"> course not found</p>
