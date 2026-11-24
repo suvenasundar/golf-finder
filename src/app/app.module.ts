@@ -7,6 +7,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { CourseListComponent } from './pages/course-list/course-list.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { RegionChipComponent } from './components/region-chip/region-chip.component';
+import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RegionChipComponent } from './components/region-chip/region-chip.compon
     HeaderComponent,
     CourseListComponent,
     CourseCardComponent,
-    RegionChipComponent
+    RegionChipComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,
