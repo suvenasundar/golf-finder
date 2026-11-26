@@ -1,70 +1,20 @@
 import { Injectable } from '@angular/core';
 import { GolfCourse } from '../models/golf-course';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
-  getCourses(): GolfCourse[]{
-    return this.courses
+  private apiUrl = 'http://localhost:3000/courses';
+  constructor(private http: HttpClient) {}
+
+  getCourses(): Observable <GolfCourse[]>{
+    return this.http.get<GolfCourse[]>(this.apiUrl)
   }
-  getCourseById(id: number):GolfCourse | undefined {
-    return this.courses.find(c => c.id === id)
+  getCourseById(id: number): Observable <GolfCourse>{
+   return this.http.get<GolfCourse>(`${this.apiUrl}/${id}`)
   }
-  courses: GolfCourse[] = [
-    {
-      id: 1,
-      name: 'Lakeview Golf Club',
-      city: 'Northfield',
-      region: 'North',
-      holes: 18,
-      par: 72,
-      rating: 4.6,
-    },
-    {
-      id: 2,
-      name: 'Green Hills Course',
-      city: 'Hillside',
-      region: 'North',
-      holes: 9,
-      par: 36,
-      rating: 4.1,
-    },
-    {
-      id: 3,
-      name: 'Sunrise Links',
-      city: 'Eastport',
-      region: 'East',
-      holes: 18,
-      par: 71,
-      rating: 4.4,
-    },
-    {
-      id: 4,
-      name: 'Old Oak Golf Club',
-      city: 'Westbrook',
-      region: 'West',
-      holes: 18,
-      par: 70,
-      rating: 4.2,
-    },
-    {
-      id: 5,
-      name: 'Coastal Dunes Course',
-      city: 'Southbay',
-      region: 'South',
-      holes: 18,
-      par: 72,
-      rating: 4.8,
-    },
-    {
-      id: 6,
-      name: 'Maple Ridge Golf Club',
-      city: 'Westbrook',
-      region: 'West',
-      holes: 9,
-      par: 35,
-      rating: 3.9,
-    },
-  ];
   
 }

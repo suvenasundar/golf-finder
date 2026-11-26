@@ -15,8 +15,11 @@ export class CourseListComponent {
   selectedRegion: Region | 'All' = 'All';
 
   courses:GolfCourse [] = []
+  
   constructor(private courseService: CourseService){
-    this.courses = this.courseService.getCourses()
+    this.courseService.getCourses().subscribe(courses => {
+      this.courses = courses;
+    })
 
   }
   

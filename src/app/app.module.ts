@@ -8,7 +8,7 @@ import { CourseListComponent } from './pages/course-list/course-list.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { RegionChipComponent } from './components/region-chip/region-chip.component';
 import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,8 @@ import { CourseDetailComponent } from './pages/course-detail/course-detail.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
