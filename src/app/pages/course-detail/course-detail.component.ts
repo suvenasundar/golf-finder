@@ -10,10 +10,8 @@ import { CourseService } from 'src/app/services/course.service';
   templateUrl: './course-detail.component.html',
   styleUrls: ['./course-detail.component.scss'],
 })
-
-
 export class CourseDetailComponent {
-  course$: Observable<GolfCourse | undefined>;   // replaces `course`
+  course$: Observable<GolfCourse | undefined>;  
   loading = true;
   notFound = false;
 
