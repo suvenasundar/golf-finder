@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { catchError, switchMap , of} from 'rxjs';
 import { GolfCourse } from 'src/app/models/golf-course';
 import { CourseService } from 'src/app/services/course.service';
 @Component({
@@ -15,21 +16,24 @@ export class CourseDetailComponent {
     private route: ActivatedRoute,
     private courseService: CourseService,
   ) {
-    this.route.paramMap.subscribe((params) => {
-      const id = Number(params.get('id'));
-      this.loading = true;
-      this.notFound = false;
-      this.course = undefined;
-      this.courseService.getCourseById(id).subscribe({
-        next: (course) => {
-          this.course = course;
-          this.loading = false;
-        },
-        error: () => {
-          this.notFound = true;
-          this.loading = false;
-        },
-      });
-    });
+    this.route.paramMap.pipe(
+      switchMap(params=>{
+        const id = Number(params.get('id'));
+        this.loading = true;
+        this.notFound = false;
+        this.course = undefined;
+        return this.courseService.getCourseById(id).pipe(
+          catchError(()=>{
+            this.notFound = true;
+            return of(undefined);
+          })
+        )
+      })
+    ).subscribe({
+      next: course => {
+        this.course = course;
+        this.loading = false;
+      }
+    })
   }
 }
