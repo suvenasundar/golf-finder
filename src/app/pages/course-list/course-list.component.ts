@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GolfCourse, Region } from 'src/app/models/golf-course';
 import { CourseService } from 'src/app/services/course.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
@@ -14,19 +15,16 @@ export class CourseListComponent {
   regions: (Region | 'All')[] = ['All', 'North', 'South', 'East', 'West'];
   selectedRegion: Region | 'All' = 'All';
 
-  courses:GolfCourse [] = []
+  courses$ :Observable<GolfCourse[]>;
   
   constructor(private courseService: CourseService){
-    this.courseService.getCourses().subscribe(courses => {
-      this.courses = courses;
-    })
-
+    this.courses$= this.courseService.getCourses()
   }
   
   
-  get filteredCourses(): GolfCourse[] {
+  filteredCourses(courses: GolfCourse[]): GolfCourse[] {
   const term = this.searchText.trim().toLowerCase();
-  return this.courses.filter(c => {
+  return courses.filter(c => {
     const matchesSearch = c.name.toLowerCase().includes(term) || c.city.toLowerCase().includes(term);
     const matchesRegion = this.selectedRegion === 'All' || c.region === this.selectedRegion;
     return matchesSearch && matchesRegion;
