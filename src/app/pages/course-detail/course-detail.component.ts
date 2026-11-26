@@ -5,7 +5,7 @@ import { CourseService } from 'src/app/services/course.service';
 @Component({
   selector: 'app-course-detail',
   templateUrl: './course-detail.component.html',
-  styleUrls: ['./course-detail.component.scss']
+  styleUrls: ['./course-detail.component.scss'],
 })
 export class CourseDetailComponent {
   course: GolfCourse | undefined;
@@ -13,20 +13,23 @@ export class CourseDetailComponent {
   notFound = false;
   constructor(
     private route: ActivatedRoute,
-    private courseService: CourseService
-
-  ){
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.courseService.getCourseById(id).subscribe({
-      next: course =>{
-        this.course = course;
-        this.loading = false
-      },
-      error: () => {
-        this.notFound = true;
-        this.loading = false;
-      }
+    private courseService: CourseService,
+  ) {
+    this.route.paramMap.subscribe((params) => {
+      const id = Number(params.get('id'));
+      this.loading = true;
+      this.notFound = false;
+      this.course = undefined;
+      this.courseService.getCourseById(id).subscribe({
+        next: (course) => {
+          this.course = course;
+          this.loading = false;
+        },
+        error: () => {
+          this.notFound = true;
+          this.loading = false;
+        },
+      });
     });
-    
   }
 }
