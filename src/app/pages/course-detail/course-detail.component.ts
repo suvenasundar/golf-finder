@@ -9,14 +9,23 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class CourseDetailComponent {
   course: GolfCourse | undefined;
+  loading = true;
+  notFound = false;
   constructor(
     private route: ActivatedRoute,
     private courseService: CourseService
 
   ){
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.courseService.getCourseById(id).subscribe(course => {
-      this.course = course;
+    this.courseService.getCourseById(id).subscribe({
+      next: course =>{
+        this.course = course;
+        this.loading = false
+      },
+      error: () => {
+        this.notFound = true;
+        this.loading = false;
+      }
     });
     
   }
