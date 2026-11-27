@@ -9,6 +9,7 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
 import { RegionChipComponent } from './components/region-chip/region-chip.component';
 import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     CourseListComponent,
     CourseCardComponent,
     RegionChipComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
