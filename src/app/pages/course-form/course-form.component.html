@@ -3,8 +3,11 @@
 <form [formGroup]="form">
     <label for="name">Name</label>
     <input id="name" formControlName="name">
+    <p *ngIf="form.controls.name.touched && form.controls.name.errors?.['required']">Name is required</p>
+    <p *ngIf="form.controls.name.touched && form.controls.name.errors?.['minlength']">Name must be at least 3 characters</p>
     <label for="city">City</label>
     <input id="city" formControlName="city">
+    <p *ngIf="form.controls.city.touched && form.controls.city.errors?.['required']">Address is required</p>
     <label for="region">Region</label>
     <select id="region" formControlName="region">
         <option>North</option>
@@ -12,6 +15,8 @@
         <option>West</option>
         <option>East</option>
     </select>
+    <button type="submit" [disabled]="form.invalid">Save</button>
 </form>
 
 <pre>{{form.value | json}}</pre>
+<pre>name errors: {{ form.controls.name.errors | json }}</pre>
