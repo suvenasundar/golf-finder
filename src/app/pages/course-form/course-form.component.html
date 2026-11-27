@@ -7,7 +7,7 @@
     <p *ngIf="form.controls.name.touched && form.controls.name.errors?.['minlength']">Name must be at least 3 characters</p>
     <label for="city">City</label>
     <input id="city" formControlName="city">
-    <p *ngIf="form.controls.city.touched && form.controls.city.errors?.['required']">Address is required</p>
+    <p *ngIf="form.controls.city.touched && form.controls.city.errors?.['required']">City is required</p>
     <label for="region">Region</label>
     <select id="region" formControlName="region">
         <option>North</option>
@@ -15,7 +15,15 @@
         <option>West</option>
         <option>East</option>
     </select>
-    <button type="submit" [disabled]="form.invalid">Save</button>
+   <label for="holes">Holes</label>
+   <input id="holes" type="number" formControlName="holes">
+   <p *ngIf="form.controls.holes.touched && form.controls.holes.hasError('required')">Holes is required</p>
+   <p *ngIf="form.controls.holes.touched && form.controls.holes.hasError('min')">Holes must be at least 1</p>
+   <label for="par">Par</label>
+   <input id="par" type="number" formControlName="par">
+   <p *ngIf="form.controls.par.touched && form.controls.par.hasError('required')">Par is required</p>
+   <p *ngIf="form.controls.par.touched && form.controls.par.hasError('min')">Par must be at least 2</p>
+   <button type="submit" [disabled]="form.invalid">Save</button>
 </form>
 
 <pre>{{form.value | json}}</pre>
