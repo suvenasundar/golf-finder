@@ -10,6 +10,8 @@ import { RegionChipComponent } from './components/region-chip/region-chip.compon
 import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CourseFormComponent } from './pages/course-form/course-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,12 +20,14 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     CourseCardComponent,
     RegionChipComponent,
     CourseDetailComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CourseFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

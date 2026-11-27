@@ -1,0 +1,17 @@
+<h2>Add a Course</h2>
+
+<form [formGroup]="form">
+    <label for="name">Name</label>
+    <input id="name" formControlName="name">
+    <label for="city">City</label>
+    <input id="city" formControlName="city">
+    <label for="region">Region</label>
+    <select id="region" formControlName="region">
+        <option>North</option>
+        <option>South</option>
+        <option>West</option>
+        <option>East</option>
+    </select>
+</form>
+
+<pre>{{form.value | json}}</pre>

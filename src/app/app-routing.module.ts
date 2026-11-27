@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CourseListComponent } from './pages/course-list/course-list.component';
 import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CourseFormComponent } from './pages/course-form/course-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'courses', pathMatch: 'full'},
   { path: 'courses', component: CourseListComponent },
+  { path: 'courses/new', component:CourseFormComponent},
   { path: 'courses/:id', component: CourseDetailComponent},
   { path: '**', component: NotFoundComponent}
 ];
