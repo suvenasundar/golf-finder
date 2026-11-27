@@ -16,5 +16,8 @@ export class CourseService {
   getCourseById(id: number): Observable <GolfCourse>{
    return this.http.get<GolfCourse>(`${this.apiUrl}/${id}`)
   }
+  addCourse(course:Omit <GolfCourse, 'id'>): Observable <GolfCourse>{
+    return this.http.post<GolfCourse>(this.apiUrl, course )
+  }
   
 }

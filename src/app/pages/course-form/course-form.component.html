@@ -1,6 +1,6 @@
 <h2>Add a Course</h2>
 
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="save()">
     <label for="name">Name</label>
     <input id="name" formControlName="name">
     <p *ngIf="form.controls.name.touched && form.controls.name.errors?.['required']">Name is required</p>
@@ -24,7 +24,7 @@
    <p *ngIf="form.controls.par.touched && form.controls.par.hasError('required')">Par is required</p>
    <p *ngIf="form.controls.par.touched && form.controls.par.hasError('min')">Par must be at least 2</p>
    <button type="submit" [disabled]="form.invalid">Save</button>
+  
 </form>
+ 
 
-<pre>{{form.value | json}}</pre>
-<pre>name errors: {{ form.controls.name.errors | json }}</pre>
