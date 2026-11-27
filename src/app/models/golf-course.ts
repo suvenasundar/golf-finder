@@ -6,6 +6,9 @@ export interface GolfCourse {
     holes: number;
     par: number;
     rating: number;
+    address: string;
+    lat: number;
+    lng: number;
 }
 
 
